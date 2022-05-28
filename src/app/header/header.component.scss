@@ -1,0 +1,35 @@
+.component {
+  height: 100%;
+  background-color: var(--background-dark);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 35%;
+
+  &__title {
+    text-transform: uppercase;
+    color: var(--text-white);
+    font-size: 2rem;
+  }
+
+  .navigation {
+    height: 100%;
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__link {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: var(--text-lightgray);
+      font-size: 1.2rem;
+      transition: all .3s ease;
+    }
+
+    &__link:hover {
+      color: var(--text-white);
+    }
+  }
+}
+
