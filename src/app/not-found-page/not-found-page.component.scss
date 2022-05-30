@@ -1,0 +1,20 @@
+.wrapper {
+  padding: 5rem;
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 3%;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 12%;
+    background-color: var(--background-lightgrey);
+    border: 2px solid var(--border-dark);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
