@@ -9,6 +9,7 @@
   border-radius: 10px;
   background-color: var(--background-lightgrey);
   text-align: center;
+  transition: all .3s ease;
 
   &__name {
     color: var(--text-dark);
@@ -34,4 +35,8 @@
       font-style: oblique;
     }
   }
+}
+
+.planet:hover {
+  transform: scale(1.02);
 }
