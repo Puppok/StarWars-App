@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, map} from "rxjs";
+import {BehaviorSubject, delay, map} from "rxjs";
 import {ApiService} from "../shared/api.service";
 import {PlanetDTO} from "../shared/model/planetDTO.interface";
 
@@ -7,6 +7,8 @@ import {PlanetDTO} from "../shared/model/planetDTO.interface";
   providedIn: 'root'
 })
 export class PlanetListService {
+
+  public showPreloader: boolean = true
 
   private planetsDTO$$ = new BehaviorSubject<PlanetDTO>({
     count: 0,
@@ -25,14 +27,22 @@ export class PlanetListService {
   }
 
   init(): void {
-    this.apiService.getPlanets().subscribe(planetsDTO => this.planetsDTO$$.next(planetsDTO))
+    this.apiService.getPlanets().pipe(delay(500)).subscribe(planetsDTO => {
+      this.planetsDTO$$.next(planetsDTO)
+      setTimeout(() => this.showPreloader = false, 300)
+      this.showPreloader = false
+    })
   }
 
   nextPage(): void {
     const nextUrl = this.planetsDTO$$.getValue()?.next
     if (nextUrl) {
+      this.showPreloader = true
       this.apiService.getPlanets(nextUrl).pipe(
-        map(info => this.planetsDTO$$.next(info))
+        map(info => {
+          this.planetsDTO$$.next(info)
+          setTimeout(() => this.showPreloader = false, 300)
+        })
       ).subscribe()
     }
   }
@@ -40,8 +50,12 @@ export class PlanetListService {
   previousPage(): void {
     const prevUrl = this.planetsDTO$$.getValue()?.previous
     if (prevUrl) {
+      this.showPreloader = true
       this.apiService.getPlanets(prevUrl).pipe(
-        map(info => this.planetsDTO$$.next(info))
+        map(info => {
+          this.planetsDTO$$.next(info)
+          setTimeout(() => this.showPreloader = false, 300)
+        })
       ).subscribe()
     }
   }
