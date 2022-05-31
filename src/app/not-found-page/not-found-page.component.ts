@@ -11,7 +11,7 @@ export class NotFoundPageComponent {
   constructor(private router: Router) { }
 
   returnBackPage() {
-    this.router.navigateByUrl('/planet-list').then(() => 'success')
+    this.router.navigateByUrl('/planet-list')
   }
 
 }

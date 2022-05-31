@@ -1,10 +1,17 @@
-<section class="wrapper">
-  <div class="planet-list">
-    <planet-info *ngFor="let planet of planetService.planets$ | async" [planet] = "planet"></planet-info>
+<section class="wrapper" [class.blurred]="planetService.showPreloader">
+  <div class="planet-list" >
+    <planet-info class="planet-list__planets" *ngFor="let planet of planetService.planets$ | async" [planet] = "planet"></planet-info>
+  </div>
+  <div class="buttons">
     <button class="planet-list__btn-previous" (click)="planetService.previousPage()">Previous page</button>
     <button class="planet-list__btn-next" (click)="planetService.nextPage()">Next page</button>
   </div>
 </section>
+<div class="preloader" *ngIf="planetService.showPreloader">
+  <preloader></preloader>
+</div>
+
+
 
 
 
