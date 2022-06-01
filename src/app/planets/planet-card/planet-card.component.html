@@ -1,0 +1,5 @@
+<section class="planet-card-wrapper" *ngIf="planetCardService.planet$ | async as planet">
+  <div class="planet-card-wrapper__info">
+    <h4>{{planet.name}}</h4>
+  </div>
+</section>
