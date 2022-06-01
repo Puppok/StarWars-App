@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {PlanetCardService} from "./planet-card.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-planet-card',
@@ -9,6 +10,11 @@ import {PlanetCardService} from "./planet-card.service";
 })
 export class PlanetCardComponent {
 
-  constructor(readonly planetCardService: PlanetCardService) { }
+  constructor(readonly planetCardService: PlanetCardService,
+              private router: Router) { }
+
+  returnToList() {
+    this.router.navigateByUrl('/planet')
+  }
 
 }

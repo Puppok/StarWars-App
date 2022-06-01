@@ -1,5 +1,62 @@
 <section class="planet-card-wrapper" *ngIf="planetCardService.planet$ | async as planet">
-  <div class="planet-card-wrapper__info">
-    <h4>{{planet.name}}</h4>
+
+  <div class="flex-container">
+    <section class="planet-info">
+
+      <div class="planet-info__main">
+        <h1 class="planet-info__name">{{planet.name}}</h1>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Terrain: </span>
+          {{planet.terrain}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Climate: </span>
+          {{planet.climate}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Population: </span>
+          {{planet.population}}
+        </p>
+      </div>
+
+      <div class="planet-info__more">
+        <h2 class="planet-info__topic">More info</h2>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Diameter: </span>
+          {{planet.diameter | number}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Rotation period: </span>
+          {{planet.rotation_period}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Orbital period: </span>
+          {{planet.orbital_period}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Gravity: </span>
+          {{planet.gravity}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Surface-water: </span>
+          {{planet.surface_water}}
+        </p>
+        <button class="planet-info__btn" (click)="returnToList()">To planet list</button>
+      </div>
+    </section>
+
+    <div class="residents">
+      resident list
+    </div>
+
+    <div class="appearance">
+      film list
+    </div>
+
   </div>
+
+  <footer class="data-info">
+    <p>Created: {{planet.created | date}}</p>
+    <p>Last edit: {{planet.edited | date}}</p>
+  </footer>
 </section>
