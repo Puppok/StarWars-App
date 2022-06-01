@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, delay, map} from "rxjs";
+import {BehaviorSubject, map} from "rxjs";
 import {ApiService} from "../shared/api.service";
 import {PlanetDTO} from "../shared/model/planetDTO.interface";
 
@@ -27,10 +27,9 @@ export class PlanetListService {
   }
 
   init(): void {
-    this.apiService.getPlanets().pipe(delay(500)).subscribe(planetsDTO => {
+    this.apiService.getPlanets().subscribe(planetsDTO => {
       this.planetsDTO$$.next(planetsDTO)
       setTimeout(() => this.showPreloader = false, 300)
-      this.showPreloader = false
     })
   }
 

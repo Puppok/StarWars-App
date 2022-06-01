@@ -1,7 +1,11 @@
-.component {
+.wrapper {
   height: 100%;
 
   .header {
     height: 8%;
+  }
+
+  .app-section {
+    height: 92%;
   }
 }
