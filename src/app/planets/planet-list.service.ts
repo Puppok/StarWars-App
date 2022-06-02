@@ -25,14 +25,16 @@ export class PlanetListService {
     map(planetDTO => planetDTO.results)
   )
 
-  constructor(private apiService: ApiService) {
-  }
+  constructor(private apiService: ApiService) {}
 
-  init(): void {
-    this.apiService.getPlanets().subscribe(planetsDTO => {
-      this.planetsDTO$$.next(planetsDTO)
-      setTimeout(() => this.showPreloader = false, 300)
-    })
+  init() {
+    if(!this.isInit) {
+      this.apiService.getPlanets().subscribe(planetsDTO => {
+        this.planetsDTO$$.next(planetsDTO)
+        setTimeout(() => this.showPreloader = false, 300)
+        this.isInit = true
+      })
+    }
   }
 
   nextPage(): void {
