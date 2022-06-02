@@ -47,8 +47,9 @@
 
     <div class="residents">
       <h1 class="residents__title">Resident list</h1>
+      <gender-filter class="residents__filter-field"></gender-filter>
       <div class="residents__flex-card">
-        <div class="resident-list" *ngFor="let resident of planetCardService.residents$ | async">
+        <div class="resident-list" *ngFor="let resident of residents$ | async">
           <h2 class="resident-list__name">
             {{resident.name}}
           </h2>

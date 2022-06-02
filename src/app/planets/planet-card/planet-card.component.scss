@@ -80,7 +80,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 6%
+      }
+
+      &__filter-field {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5%;
       }
 
       &__flex-card {
