@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {PlanetDTO} from "./model/planetDTO.interface";
 import {Planet} from "./model/planet.interface";
 import {Film} from "./model/film.interface";
+import {Resident} from "./model/resident.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class ApiService {
 
   getFilm(url: string) {
     return this.http.get<Film>(url)
+  }
+
+  getResident(url: string) {
+    return this.http.get<Resident>(url)
   }
 }

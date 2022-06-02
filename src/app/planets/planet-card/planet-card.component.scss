@@ -6,12 +6,12 @@
   flex-direction: column;
 
   .flex-container {
+    height: 90%;
     display: flex;
-    flex: 1;
     justify-content: space-between;
 
     .planet-info {
-      width: 35%;
+      width: 25%;
 
       &__main {
         margin-bottom: 15%;
@@ -53,6 +53,7 @@
       width: 25%;
 
       &__title {
+        padding: 5%;
         font-size: 2rem;
         display: flex;
         justify-content: center;
@@ -71,10 +72,65 @@
 
     .residents {
       width: 30%;
+      height: 100%;
+
+      &__title {
+        padding: 5%;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 6%
+      }
+
+      &__flex-card {
+        height: 80%;
+        overflow-y: scroll;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 3%;
+      }
+
+      &__flex-card::-webkit-scrollbar {
+        background-color: var(--background-grey);
+        border-radius: 7px;
+      }
+
+      &__flex-card::-webkit-scrollbar-thumb {
+        background-color: var(--background-lightgrey);
+        border-radius: 7px;
+      }
+
+      .resident-list {
+        margin-bottom: 4%;
+        width: 60%;
+
+        &__name {
+          margin-bottom: 2%;
+          text-align: center;
+        }
+
+        &__header {
+          font-weight: bold;
+        }
+
+        &__flex-info {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+
+        &__info {
+          width: 50%;
+        }
+      }
     }
   }
 
   .data-info {
+    height: 10%;
     padding: .8rem 0 .3rem;
     display: flex;
     flex-direction: column;
