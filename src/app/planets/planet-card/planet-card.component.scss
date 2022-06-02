@@ -1,5 +1,4 @@
 .planet-card-wrapper {
-  background-color: green;
   height: 100%;
   width: 100%;
   padding: 2rem 5rem 0;
@@ -7,13 +6,11 @@
   flex-direction: column;
 
   .flex-container {
-    background-color: black;
     display: flex;
     flex: 1;
     justify-content: space-between;
 
     .planet-info {
-      background-color: white;
       width: 35%;
 
       &__main {
@@ -53,19 +50,32 @@
     }
 
     .appearance {
-      background-color: white;
-      width: 30%;
+      width: 25%;
+
+      &__title {
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8%;
+      }
+
+      .film-list {
+        margin-bottom: 4%;
+
+        &__header {
+          font-weight: bold;
+        }
+      }
     }
 
     .residents {
-      background-color: white;
       width: 30%;
     }
   }
 
   .data-info {
     padding: .8rem 0 .3rem;
-    background-color: aqua;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -50,7 +50,18 @@
     </div>
 
     <div class="appearance">
-      film list
+      <h1 class="appearance__title">Film list</h1>
+      <div class="film-list" *ngFor="let film of planetCardService.films$ | async">
+        <h2 class="film-list__info">
+          <span class="film-list__header">Star Wars: </span>
+          {{film.title}}</h2>
+        <p class="film-list__info">
+          <span class="film-list__header">Episode number: </span>
+          {{film.episode_id}}</p>
+        <p class="film-list__info">
+          <span class="film-list__header">Release date: </span>
+          {{film.release_date | date}}</p>
+      </div>
     </div>
 
   </div>
