@@ -1,4 +1,6 @@
-<section class="planet-card-wrapper" *ngIf="planetCardService.planet$ | async as planet">
+<section class="planet-card-wrapper"
+         *ngIf="planetCardService.planet$ | async as planet"
+         [class.blurred]="showPreloader">
 
   <div class="flex-container">
     <section class="planet-info">
@@ -83,7 +85,6 @@
               {{resident.eye_color}}
             </p>
           </div>
-
         </div>
       </div>
     </div>
@@ -105,7 +106,6 @@
         </p>
       </div>
     </div>
-
   </div>
 
   <footer class="data-info">
@@ -113,3 +113,7 @@
     <p>Last edit: {{planet.edited | date}}</p>
   </footer>
 </section>
+<div class="preloader"
+     *ngIf="showPreloader">
+  <preloader></preloader>
+</div>

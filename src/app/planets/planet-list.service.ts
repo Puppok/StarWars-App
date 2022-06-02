@@ -8,7 +8,9 @@ import {PlanetDTO} from "../shared/model/planetDTO.interface";
 })
 export class PlanetListService {
 
-  public showPreloader: boolean = true
+  public showPreloader = true
+
+  private isInit = false
 
   private planetsDTO$$ = new BehaviorSubject<PlanetDTO>({
     count: 0,
@@ -23,14 +25,16 @@ export class PlanetListService {
     map(planetDTO => planetDTO.results)
   )
 
-  constructor(private apiService: ApiService) {
-  }
+  constructor(private apiService: ApiService) {}
 
-  init(): void {
-    this.apiService.getPlanets().subscribe(planetsDTO => {
-      this.planetsDTO$$.next(planetsDTO)
-      setTimeout(() => this.showPreloader = false, 300)
-    })
+  init() {
+    if(!this.isInit) {
+      this.apiService.getPlanets().subscribe(planetsDTO => {
+        this.planetsDTO$$.next(planetsDTO)
+        setTimeout(() => this.showPreloader = false, 300)
+        this.isInit = true
+      })
+    }
   }
 
   nextPage(): void {
