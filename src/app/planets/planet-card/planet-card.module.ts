@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {PlanetCardComponent} from "./planet-card.component";
 import {RouterModule, Routes} from "@angular/router";
+import {GenderFilterModule} from "./gender-filter/gender-filter.module";
 
 const routes: Routes = [
   {
@@ -13,11 +14,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    GenderFilterModule
   ],
   exports: [],
   declarations: [
-    PlanetCardComponent
+    PlanetCardComponent,
   ]
 })
 export class PlanetCardModule {
