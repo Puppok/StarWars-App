@@ -14,4 +14,8 @@ export class GenderFilterService {
   updateOption(data: FilterOptions) {
     this.option$$.next(data)
   }
+
+  clearOption() {
+    this.option$$.next(FilterOptions.NONE)
+  }
 }

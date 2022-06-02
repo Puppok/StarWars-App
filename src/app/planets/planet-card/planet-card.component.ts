@@ -51,4 +51,8 @@ export class PlanetCardComponent implements OnInit, OnDestroy {
     .pipe(
       map(([residents, filterOptions]) => PlanetCardComponent.filteredResidents(residents, filterOptions))
     )
+
+  ngOnDestroy() {
+    this.genderFilterService.clearOption()
+  }
 }

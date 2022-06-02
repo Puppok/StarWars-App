@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FilterOptions} from "../../../shared/filter-options";
 import {FormControl} from "@angular/forms";
 import {Subscription} from "rxjs";
@@ -7,9 +7,9 @@ import {GenderFilterService} from "./gender-filter.service";
 @Component({
   selector: 'gender-filter',
   templateUrl: './gender-filter.component.html',
-  styleUrls: ['./gender-filter.component.scss']
+  styleUrls: ['./gender-filter.component.scss'],
 })
-export class GenderFilterComponent implements OnInit {
+export class GenderFilterComponent implements OnInit, OnDestroy {
 
   readonly filterOptions = FilterOptions
 
@@ -22,4 +22,7 @@ export class GenderFilterComponent implements OnInit {
     this.optionStream.add(this.option.valueChanges.subscribe(value => this.genderFilterService.updateOption(value)))
   }
 
+  ngOnDestroy(): void {
+    this.optionStream.unsubscribe()
+  }
 }
