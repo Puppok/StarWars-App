@@ -46,11 +46,63 @@
     </section>
 
     <div class="residents">
-      resident list
+      <h1 class="residents__title">Resident list</h1>
+      <div class="residents__flex-card">
+        <div class="resident-list" *ngFor="let resident of planetCardService.residents$ | async">
+          <h2 class="resident-list__name">
+            {{resident.name}}
+          </h2>
+          <div class="resident-list__flex-info">
+            <p class="resident-list__info">
+              <span class="resident-list__header">Gender: </span>
+              {{resident.gender}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Birth: </span>
+              {{resident.birth_year}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Height: </span>
+              {{resident.height}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Mass: </span>
+              {{resident.mass}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Hair: </span>
+              {{resident.hair_color}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Skin: </span>
+              {{resident.skin_color}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Eyes: </span>
+              {{resident.eye_color}}
+            </p>
+          </div>
+
+        </div>
+      </div>
     </div>
 
     <div class="appearance">
-      film list
+      <h1 class="appearance__title">Film list</h1>
+      <div class="film-list" *ngFor="let film of planetCardService.films$ | async">
+        <h2 class="film-list__info">
+          <span class="film-list__header">Star Wars: </span>
+          {{film.title}}
+        </h2>
+        <p class="film-list__info">
+          <span class="film-list__header">Episode number: </span>
+          {{film.episode_id}}
+        </p>
+        <p class="film-list__info">
+          <span class="film-list__header">Release date: </span>
+          {{film.release_date | date}}
+        </p>
+      </div>
     </div>
 
   </div>
