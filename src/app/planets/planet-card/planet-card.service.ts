@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {
   catchError,
   EMPTY,
-  Observable,
+  Observable, of,
   shareReplay,
   switchMap,
   take,
@@ -27,15 +27,15 @@ export class PlanetCardService {
   )
 
   readonly films$: Observable<Film[]> = this.planet$.pipe(
-    switchMap(planet => zip(
+    switchMap(planet => planet.films.length > 0 ? zip(
       planet.films.map(url => this.api.getFilm(url))
-    ))
+    ) : of([]))
   )
 
   readonly residents$: Observable<Resident[]> = this.planet$.pipe(
-    switchMap(planet => zip(
+    switchMap(planet => planet.residents.length > 0 ? zip(
       planet.residents.map(url => this.api.getResident(url))
-    ))
+    ) : of([]))
   )
 
   constructor(private api: ApiService,
