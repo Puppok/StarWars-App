@@ -4,7 +4,7 @@ import {PlanetListComponent} from "./planet-list/planet-list.component";
 import {PlanetInfoComponent} from "./planet-info/planet-info.component";
 import {CommonModule} from "@angular/common";
 import {RouterModule, Routes} from "@angular/router";
-import {PreloaderComponent} from "./preloader/preloader.component";
+import {PreloaderModule} from "./preloader/preloader.module";
 
 
 const routes: Routes = [
@@ -27,11 +27,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    PreloaderModule
   ],
   declarations: [
     PlanetListComponent,
     PlanetInfoComponent,
-    PreloaderComponent,
   ],
 })
 export class PlanetsModule {
