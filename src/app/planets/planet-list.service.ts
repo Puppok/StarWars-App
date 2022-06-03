@@ -9,7 +9,7 @@ import {PlanetDTO} from "../shared/model/planetDTO.interface";
 export class PlanetListService {
 
   public showPreloader = true
-  public showButtons = true
+  public hideButtons = true
 
   private isInit = false
 
@@ -34,7 +34,7 @@ export class PlanetListService {
         this.planetsDTO$$.next(planetsDTO)
         setTimeout(() => this.showPreloader = false, 300)
         this.isInit = true
-        this.showButtons = false
+        this.hideButtons = false
       })
     }
   }
