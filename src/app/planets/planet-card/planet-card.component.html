@@ -92,7 +92,7 @@
     <div class="appearance">
       <h1 class="appearance__title">Film list</h1>
       <div class="film-list" *ngFor="let film of planetCardService.films$ | async">
-        <h2 class="film-list__info">
+        <h2 class="film-list__name">
           <span class="film-list__header">Star Wars: </span>
           {{film.title}}
         </h2>
@@ -113,6 +113,7 @@
     <p>Last edit: {{planet.edited | date}}</p>
   </footer>
 </section>
+
 <div class="preloader"
      *ngIf="showPreloader">
   <preloader></preloader>
