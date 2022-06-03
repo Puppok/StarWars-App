@@ -8,6 +8,11 @@ import {PlanetDTO} from "../shared/model/planetDTO.interface";
 })
 export class PlanetListService {
 
+  public showPreloader = true
+  public showButtons = true
+
+  private isInit = false
+
   private planetsDTO$$ = new BehaviorSubject<PlanetDTO>({
     count: 0,
     next: 'https://swapi.dev/api/planets/?page=1',
@@ -21,18 +26,28 @@ export class PlanetListService {
     map(planetDTO => planetDTO.results)
   )
 
-  constructor(private apiService: ApiService) {
-  }
+  constructor(private apiService: ApiService) {}
 
-  init(): void {
-    this.apiService.getPlanets().subscribe(planetsDTO => this.planetsDTO$$.next(planetsDTO))
+  init() {
+    if(!this.isInit) {
+      this.apiService.getPlanets().subscribe(planetsDTO => {
+        this.planetsDTO$$.next(planetsDTO)
+        setTimeout(() => this.showPreloader = false, 300)
+        this.isInit = true
+        this.showButtons = false
+      })
+    }
   }
 
   nextPage(): void {
     const nextUrl = this.planetsDTO$$.getValue()?.next
     if (nextUrl) {
+      this.showPreloader = true
       this.apiService.getPlanets(nextUrl).pipe(
-        map(info => this.planetsDTO$$.next(info))
+        map(info => {
+          this.planetsDTO$$.next(info)
+          setTimeout(() => this.showPreloader = false, 300)
+        })
       ).subscribe()
     }
   }
@@ -40,8 +55,12 @@ export class PlanetListService {
   previousPage(): void {
     const prevUrl = this.planetsDTO$$.getValue()?.previous
     if (prevUrl) {
+      this.showPreloader = true
       this.apiService.getPlanets(prevUrl).pipe(
-        map(info => this.planetsDTO$$.next(info))
+        map(info => {
+          this.planetsDTO$$.next(info)
+          setTimeout(() => this.showPreloader = false, 300)
+        })
       ).subscribe()
     }
   }

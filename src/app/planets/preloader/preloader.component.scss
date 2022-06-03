@@ -1,0 +1,18 @@
+.preloader {
+  height: 60px;
+  width: 60px;
+  border: 5px solid var(--background-dark);
+  border-radius: 50%;
+  border-top-color: var(--background-white);
+  animation: 1s spin infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+
+}

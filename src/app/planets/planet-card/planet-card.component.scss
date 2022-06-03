@@ -1,0 +1,210 @@
+.planet-card-wrapper {
+  height: 100%;
+  width: 100%;
+  padding: 2rem 5rem 0;
+  display: flex;
+  flex-direction: column;
+
+  .flex-container {
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+
+    .planet-info {
+      width: 35%;
+
+      &__main {
+        margin-bottom: 8%;
+      }
+
+      &__name {
+        font-size: 4rem;
+        margin-bottom: 5%;
+      }
+
+      &__title {
+        font-weight: bold;
+        font-size: 1.5rem;
+        font-style: normal;
+      }
+
+      &__info {
+        font-style: italic;
+        font-size: 1.3rem;
+      }
+
+      &__topic {
+        font-size: 2rem;
+        margin-bottom: 3%;
+      }
+
+      &__btn {
+        margin-top: 8%;
+        width: 110px;
+        height: 30px;
+        border: 2px solid var(--border-dark);
+        border-radius: 5px;
+        background-color: var(--background-lightgrey);
+        font-size: 1rem;
+      }
+
+      @media(max-width: 1400px) {
+        &__name {
+          font-size: 3.2rem;
+        }
+
+        &__title {
+          font-size: 1.3rem;
+        }
+
+        &__info {
+          font-size: 1rem;
+        }
+
+        &__topic {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media(max-width: 1200px) {
+        &__name {
+          font-size: 2.5rem;
+        }
+
+        &__title {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .appearance {
+      width: 25%;
+
+      &__title {
+        padding: 5%;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8%;
+      }
+
+      .film-list {
+        margin-bottom: 4%;
+
+        &__header {
+          font-weight: bold;
+        }
+
+        @media(max-width: 1500px) {
+          &__name {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+
+    .residents {
+      width: 30%;
+      height: 100%;
+
+      &__title {
+        padding: 5%;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__filter-field {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5%;
+      }
+
+      &__flex-card {
+        height: 70%;
+        overflow-y: scroll;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 3%;
+      }
+
+      &__flex-card::-webkit-scrollbar {
+        background-color: var(--background-grey);
+        border-radius: 7px;
+      }
+
+      &__flex-card::-webkit-scrollbar-thumb {
+        background-color: var(--background-lightgrey);
+        border-radius: 7px;
+      }
+
+      .resident-list {
+        margin-bottom: 4%;
+        width: 70%;
+
+        &__name {
+          margin-bottom: 2%;
+          text-align: center;
+        }
+
+        &__header {
+          font-weight: bold;
+        }
+
+        &__flex-info {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+
+        &__info {
+          width: 50%;
+        }
+      }
+
+      @media(max-width: 1500px) {
+        .resident-list {
+          width: 82%;
+        }
+      }
+
+      @media(max-width: 1280px) {
+        .resident-list {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .data-info {
+    height: 10%;
+    padding: .8rem 0 .3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+  }
+}
+
+.blurred {
+  filter: blur(1px);
+}
+
+.preloader {
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

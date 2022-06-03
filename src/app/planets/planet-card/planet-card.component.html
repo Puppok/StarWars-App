@@ -1,0 +1,120 @@
+<section class="planet-card-wrapper"
+         *ngIf="planetCardService.planet$ | async as planet"
+         [class.blurred]="showPreloader">
+
+  <div class="flex-container">
+    <section class="planet-info">
+
+      <div class="planet-info__main">
+        <h1 class="planet-info__name">{{planet.name}}</h1>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Terrain: </span>
+          {{planet.terrain}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Climate: </span>
+          {{planet.climate}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Population: </span>
+          {{planet.population}}
+        </p>
+      </div>
+
+      <div class="planet-info__more">
+        <h2 class="planet-info__topic">More info</h2>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Diameter: </span>
+          {{planet.diameter | number}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Rotation period: </span>
+          {{planet.rotation_period}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Orbital period: </span>
+          {{planet.orbital_period}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Gravity: </span>
+          {{planet.gravity}}
+        </p>
+        <p class="planet-info__info">
+          <span class="planet-info__title">Surface-water: </span>
+          {{planet.surface_water}}
+        </p>
+        <button class="planet-info__btn" (click)="returnToList()">To planet list</button>
+      </div>
+    </section>
+
+    <div class="residents">
+      <h1 class="residents__title">Resident list</h1>
+      <gender-filter class="residents__filter-field"></gender-filter>
+      <div class="residents__flex-card">
+        <div class="resident-list" *ngFor="let resident of residents$ | async">
+          <h2 class="resident-list__name">
+            {{resident.name}}
+          </h2>
+          <div class="resident-list__flex-info">
+            <p class="resident-list__info">
+              <span class="resident-list__header">Gender: </span>
+              {{resident.gender}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Birth: </span>
+              {{resident.birth_year}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Height: </span>
+              {{resident.height}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Mass: </span>
+              {{resident.mass}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Hair: </span>
+              {{resident.hair_color}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Skin: </span>
+              {{resident.skin_color}}
+            </p>
+            <p class="resident-list__info">
+              <span class="resident-list__header">Eyes: </span>
+              {{resident.eye_color}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="appearance">
+      <h1 class="appearance__title">Film list</h1>
+      <div class="film-list" *ngFor="let film of planetCardService.films$ | async">
+        <h2 class="film-list__name">
+          <span class="film-list__header">Star Wars: </span>
+          {{film.title}}
+        </h2>
+        <p class="film-list__info">
+          <span class="film-list__header">Episode number: </span>
+          {{film.episode_id}}
+        </p>
+        <p class="film-list__info">
+          <span class="film-list__header">Release date: </span>
+          {{film.release_date | date}}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="data-info">
+    <p>Created: {{planet.created | date}}</p>
+    <p>Last edit: {{planet.edited | date}}</p>
+  </footer>
+</section>
+
+<div class="preloader"
+     *ngIf="showPreloader">
+  <preloader></preloader>
+</div>

@@ -1,0 +1,9 @@
+<div class="sort-wrapper">
+  <label>Filter by: </label>
+  <select [formControl]="option">
+    <option [value]="filterOptions.NONE">None</option>
+    <option [value]="filterOptions.MALE">Male</option>
+    <option [value]="filterOptions.FEMALE">Female</option>
+    <option [value]="filterOptions.UNKNOWN">n/a</option>
+  </select>
+</div>
