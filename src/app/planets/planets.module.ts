@@ -6,7 +6,6 @@ import {CommonModule} from "@angular/common";
 import {RouterModule, Routes} from "@angular/router";
 import {PreloaderModule} from "./preloader/preloader.module";
 
-
 const routes: Routes = [
   {
     path: '',
